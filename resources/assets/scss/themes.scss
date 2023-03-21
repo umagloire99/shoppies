@@ -1,0 +1,21 @@
+// Contain custom variables for current template
+@import "custom-variables";
+
+// Override Bootstrap core variables
+@import "theme-variables";
+
+// Bootstrap css
+@import "bootstrap/bootstrap";
+
+// Component css (overwrite bootstrap component and template component)
+@import "components";
+
+// Other custom css
+@import "custom";
+
+.text-primary{
+    color: #F24229 !important;
+}
+.bg-hover-primary,.bg-primary, .underline-primary, .badge-primary, .border-hover-primary, .btn-primary{
+    background-color: #F24229 !important;
+}

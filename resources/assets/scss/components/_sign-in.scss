@@ -1,0 +1,14 @@
+.sign-in{
+	.modal-content{
+		box-shadow: 0 0 10px 0 rgba(0,0,0,0.05);
+	}
+	.modal-dialog{
+		margin: auto;
+		top: 50%;
+		transition: transform .3s;
+		transform: translateY(-60%) !important;
+	}
+	&.show .modal-dialog{
+		transform: translateY(-50%) !important;
+	}
+}

@@ -1,0 +1,34 @@
+.widget-instagram {
+	.item {
+		padding: 0 3px;
+		margin-bottom: 6px;
+	}
+}
+
+.widget-color {
+	.item {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		position: relative;
+		&:before{
+			content: '';
+			width: 28px;
+			height: 28px;
+			display: block;
+			position: absolute;
+			left: -4px;
+			top: -4px;
+			border-radius: 50%;
+			opacity: 0;
+			transform: scale(1.2);
+			transition: all 0.3s linear;
+			border: 2px solid #ccc;
+		}
+	}
+
+	li:hover .item:before {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

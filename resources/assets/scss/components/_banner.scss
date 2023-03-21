@@ -1,0 +1,50 @@
+.banner-01 {
+	.card-img {
+		height: 420px;
+	}
+
+}
+
+.banner-02 {
+	.card-img {
+		height: 400px;
+	}
+
+	@include media-breakpoint-up(sm) {
+		.card-img {
+			height: 450px;
+		}
+
+	}
+}
+
+.banner-03 {
+	.card-img {
+		height: 350px;
+	}
+
+	@include media-breakpoint-up(sm) {
+		.card-img {
+			height: 400px;
+		}
+
+	}
+}
+
+.banner-04 {
+	.card-img {
+		padding-bottom: 120%;
+	}
+
+	@include media-breakpoint-up(lg) {
+		.card-img {
+			padding-bottom: 160.10144927536%;
+		}
+	}
+}
+
+.banner-05 {
+	.card-img {
+		height: 344px;
+	}
+}

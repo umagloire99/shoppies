@@ -1,0 +1,14 @@
+.breadcrumb-site {
+	padding-top: 2px;
+	padding-bottom: 2px;
+
+	.breadcrumb-item + .breadcrumb-item::before {
+		content: "";
+		margin: 0 15px;
+		color: #9b9b9b;
+		font-size: 0;
+		width: 20px;
+		height: 1px;
+		background-color: currentColor;
+	}
+}

@@ -1,0 +1,23 @@
+{
+    "user": {
+        "min": 500
+    },
+    "site_title": "Shoppies",
+    "site_slogan": "All you need is here!",
+    "site_description": "ORIGINAL PRODUCTS",
+    "site_keywords": "Store, Shop, Product",
+    "site_email": "info@alijumaan.com",
+    "facebook_id": "https:\/\/www.facebook.com\/happycute",
+    "instagram_id": "https:\/\/www.instgaram.com\/happycute",
+    "site_status": "Active",
+    "admin_title": "Cart White",
+    "phone_number": "(966) 000 000 000",
+    "address": "M57F+QM King Abdulaziz International Airport, Jeddah",
+    "address_altitude": "21.671914",
+    "address_longitude": "39.173875",
+    "facebook_pixel": null,
+    "google_map_api_key": null,
+    "google_recaptcha_api_key": null,
+    "google_analytics_client_id": null,
+    "twitter_id": "https:\/\/www.twitter.com\/Aalhbbash"
+}

@@ -1,0 +1,18 @@
+.quick-view{
+	.modal-dialog{
+		max-width: 1050px !important;
+		margin: auto;
+		top: 50%;
+		transition: transform .3s !important;
+		transform: translateY(-60%) !important;
+		opacity: 0;
+	}
+	.modal-content{
+		box-shadow: 0 0 10px 0 rgba(0,0,0,0.05);
+	}
+	&.show{
+		.modal-dialog{
+			transform: translateY(-50%) !important;
+		}
+	}
+}

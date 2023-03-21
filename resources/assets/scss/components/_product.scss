@@ -1,0 +1,30 @@
+
+.product {
+
+	.add-to-cart {
+		transition: color .4s .001s ease-out, background .4s .001s ease-out, visibility .4s .1s ease-out, opacity .4s .15s ease-out, transform .4s .1s ease-out;
+	}
+
+	.preview  {
+		transition: color .4s .001s ease-out, background .4s .001s ease-out, visibility .4s .15s ease-out, opacity .4s .15s ease-out, transform .4s .15s ease-out;
+	}
+
+	.add-to-wishlist {
+		transition: color .4s .001s ease-out, background .4s .001s ease-out, visibility .4s .2s ease-out, opacity .4s .2s ease-out, transform .4s .2s ease-out;
+	}
+
+	.add-to-compare {
+		transition: color .4s .001s ease-out, background .4s .001s ease-out, visibility .4s .25s ease-out, opacity .4s .25s ease-out, transform .4s .25s ease-out;
+	}
+
+
+}
+
+.switch-layout{
+	a{
+		color: #ababab;
+		&.active{
+			color: $secondary !important;
+		}
+	}
+}

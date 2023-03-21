@@ -1,0 +1,18 @@
+{
+  "countries": [
+      {
+          "id": 1,
+          "short_name": "cm",
+          "name": "Cameroon",
+          "phone_code": 237,
+          "currency_code": "XAF"
+      },
+      {
+          "id": 2,
+          "short_name": "ga",
+          "name": "Gabon",
+          "phone_code": 241,
+          "currency_code": "XAF"
+      }
+  ]
+}

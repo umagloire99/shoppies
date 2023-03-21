@@ -1,0 +1,145 @@
+{
+    "cities": [
+        {
+            "name": "Mora",
+            "country_id": "1"
+        },
+        {
+            "name": "Mbandjock",
+            "country_id": "1"
+        },
+        {
+            "name": "Ngaoundere",
+            "country_id": "1"
+        },
+        {
+            "name": "Dshang",
+            "country_id": "1"
+        },
+        {
+            "name": "Ntui",
+            "country_id": "1"
+        },
+        {
+            "name": "Maroua",
+            "country_id": "1"
+        },
+        {
+            "name": "Bafia",
+            "country_id": "1"
+        },
+        {
+            "name": "Eseka",
+            "country_id": "1"
+        },
+        {
+            "name": "Mbalmayo",
+            "country_id": "1"
+        },
+        {
+            "name": "Meiganga",
+            "country_id": "1"
+        },
+        {
+            "name": "Obala",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Yagoua",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Yaounde",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Bertoua",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Douala",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Nkongsamba",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Melong",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Bamenda",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Bafoussam",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Bangangte",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Foumban",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Foumbot",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Mbouda",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Ebolowa",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Kribi",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Sangmelima",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Buea",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Idenao",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Kumba",
+            "country_id": "1",
+            "fee": 0
+        },
+        {
+            "name": "Limbe",
+            "country_id": "1",
+            "fee": 0
+        }
+    ]
+}
+

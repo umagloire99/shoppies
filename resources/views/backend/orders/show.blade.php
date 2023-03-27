@@ -36,20 +36,20 @@
                             <td><a href="{{ route('admin.users.show', $order->user_id) }}">{{ $order->user->full_name }}</a></td>
                         </tr>
                         <tr>
+                            <th>Country</th>
+                            <td> {{ $order->userAddress->country?->name }} </td>
                             <th>Address</th>
                             <td>
                                 <a href="{{ route('admin.user_addresses.show', $order->user_address_id) }}">
-                                    {{ $order->userAddress->address_title }}
+                                    {{ $order->userAddress->city?->name }}, {{ $order->userAddress->address_title }}
                                 </a>
                             </td>
-                            <th>Shipping Agency</th>
-                            <td>{{ $order->shippingAgency->name . '('. $order->shippingAgency->city->name .')' }}</td>
-                        </tr>
+                           </tr>
 
                         <tr>
                             <th>Phone Number</th>
                             <td>
-                                {{ $order->userAddress->phone_one }}/{{ $order->userAddress->phone_two }}
+                                {{ $order->userAddress->phone_one }}
                             </td>
                             <th>Payment Method</th>
                             <td>{{ $order->paymentMethod->name }}</td>
@@ -102,21 +102,19 @@
                 <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Discount</th>
                     <th>Quantity</th>
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($order->products as $product)
+                @forelse($order->orderproducts as $orderProduct)
                     <tr>
                         <td>
-                            <a href="{{ route('admin.products.show', $product->id) }}">
-                                {{ $product->name }}
+                            <a href="{{ route('admin.products.show', $orderProduct->product_id) }}">
+                                {{ $orderProduct->product->name }}
                             </a>
                         </td>
-                        <td>XAF {{ number_format($product->price) }}</td>
-                        <td>{{ $product->pivot->discount  }}</td>
-                        <td>{{ $product->pivot->quantity }}</td>
+                        <td>XAF {{ number_format($orderProduct->price) }}</td>
+                        <td>{{ $orderProduct->quantity }}</td>
                     </tr>
                 @empty
                     <tr>

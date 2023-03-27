@@ -23,7 +23,7 @@
                 <thead>
                 <tr>
                     <th>City</th>
-                    <th>State</th>
+                    <th>Country</th>
                     <th class="text-center" style="width: 30px;">Action</th>
                 </tr>
                 </thead>
@@ -34,7 +34,7 @@
                                 {{ $city->name }}
                             </a>
                         </td>
-                        <td>{{ $city->state->name }}</td>
+                        <td>{{ $city->country->name }}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ route('admin.cities.edit', $city) }}" class="btn btn-sm btn-primary">

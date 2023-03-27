@@ -4,13 +4,13 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
             <h6 class="m-0 font-weight-bold text-primary">
-                Edit state: ({{ $city->name }})
+                Edit country: ({{ $city->name }})
             </h6>
             <div class="ml-auto">
                 <a href="{{ route('admin.cities.index') }}" class="btn btn-primary">
                     <span class="icon text-white-50">
                     </span>
-                    <span class="text">Back to states</span>
+                    <span class="text">Back to countrys</span>
                 </a>
             </div>
         </div>
@@ -28,18 +28,18 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="state_id">State</label>
-                            <select name="state_id" id="state_id" class="form-control">
+                            <label for="country_id">country</label>
+                            <select name="country_id" id="country_id" class="form-control">
                                 <option value="">---</option>
-                                @forelse($states as $state)
-                                    <option value="{{ $state->id }}"
-                                        {{ old('state_id', $city->state_id) == $state->id ? 'selected' : null }}>
-                                        {{ $state->name }}
+                                @forelse($countries as $country)
+                                    <option value="{{ $country->id }}"
+                                        {{ old('country_id', $city->country_id) == $country->id ? 'selected' : null }}>
+                                        {{ $country->name }}
                                     </option>
                                 @empty
                                 @endforelse
                             </select>
-                            @error('state_id')<span class="text-danger">{{ $message }}</span>@enderror
+                            @error('country_id')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                 </div>

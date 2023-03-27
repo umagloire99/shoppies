@@ -63,7 +63,7 @@ function generateRef(): string
  */
 function formatCartItem($cartItem): array
 {
-    $product = $cartItem->model;
+    $product = $cartItem->model ? getProducts()->where('products.id', $cartItem->model->id)->first() : null;
     return ($cartItem && $cartItem->model) ? [
         'id' => $cartItem->id,
         'rowId' => $cartItem->rowId,
@@ -107,9 +107,9 @@ function formatOrder(Order $order): array
                 'id' => $orderProduct->product_id,
                 'quantity' => $orderProduct->quantity,
                 'name' => $orderProduct->product->name,
-                'price' => $orderProduct->product->price,
+                'price' => $orderProduct->price,
                 'discount' => $orderProduct->discount,
-                'product_discount' => $orderProduct->product->price - ($orderProduct->discount * $orderProduct->product->price)
+                'product_discount' => $orderProduct->price - ($orderProduct->discount * $orderProduct->price)
             ];
         })
     ];
@@ -130,6 +130,7 @@ function formatProduct(Product $product, $level = 1): array
         'price' => $product->price,
         'quantity' => $product->quantity,
         'label' => $label,
+        'pivot' => $product->pivot,
         'discount_price' => $label == 'sale' ? (int)($product->price - $product->discount->value * $product->price) : $product->price,
         'discount' => $label == 'sale' ? $product->discount->value : null,
         'rate' => (int)$product->approvedReviews()->avg('rating'),

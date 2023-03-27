@@ -75,7 +75,7 @@ class ProductController extends Controller
                 $sortField = 'id';
                 $sortType = 'asc';
         }
-        $products = Product::with('firstMedia')->withCount(['orders']);
+        $products = getProducts()->withCount(['orders']);
         $category = Category::whereSlug($slug)->whereStatus(true)->first();
         if (!$category) {
             $category = Category::whereStatus(true)->inRandomOrder()->first();
@@ -104,21 +104,18 @@ class ProductController extends Controller
         switch ($this->highlight) {
             case 'best-seller':
                 $products = $products->active()
-                    ->hasQuantity()
                     ->orderByDesc('orders_count')
                     ->orderBy($sortField, $sortType)
                     ->paginate();
                 break;
             case 'new-arrivals':
                 $products = $products->active()
-                    ->hasQuantity()
                     ->orderByDesc('created_at')
                     ->orderBy($sortField, $sortType)
                     ->paginate();
                 break;
             case 'flash-sale':
                 $products = $products->active()
-                    ->hasQuantity()
                     ->with(['discount' => function ($query) {
                         $query->orderBy('value', 'desc');
                     }])
@@ -129,7 +126,6 @@ class ProductController extends Controller
             default:
                 $products = $products->active()
                     ->inRandomOrder()
-                    ->hasQuantity()
                     ->orderBy($sortField, $sortType)
                     ->paginate();
         }
@@ -147,10 +143,9 @@ class ProductController extends Controller
     public function show($slug)
     {
 
-        $product = Product::with('media', 'category', 'approvedReviews')
+        $product = getProducts()->with('media', 'category', 'approvedReviews')
             ->active()
             ->whereSlug($slug)
-            ->hasQuantity()
             ->activeCategory()
             ->first();
         if (!$product) {
@@ -160,13 +155,12 @@ class ProductController extends Controller
             $product->description,
             $product->img);
 
-        $relatedProducts = Product::with('firstMedia')->whereHas('category', function ($query) use ($product) {
+        $relatedProducts = getProducts()->with('firstMedia')->whereHas('category', function ($query) use ($product) {
             $query->whereId($product->category_id);
             $query->whereStatus(1);
-        })->where('id', '<>', $product->id)
+        })->where('products.id', '<>', $product->id)
             ->inRandomOrder()
             ->active()
-            ->hasQuantity()
             ->take(8)
             ->get()->transform(function (Product $product) {
                 return formatProduct($product);

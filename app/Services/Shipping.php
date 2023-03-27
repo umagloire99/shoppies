@@ -30,13 +30,10 @@ class Shipping
 
     public $email;
 
-    public $shippingAgency;
-
     public $username;
 
     public function __construct($shippingDetail)
     {
-
         try {
             if (!$shippingDetail['email']) {
                 $email = generateFakeEmail();
@@ -48,12 +45,11 @@ class Shipping
         }
 
         $this->name = $shippingDetail['name'];
-        $this->city_id = $shippingDetail['city']['city_id'];
+        $this->city_id = $shippingDetail['city']['id'];
         $this->phone_one = $shippingDetail['phone_one'];
         $this->phone_two = $shippingDetail['phone_two']?: $shippingDetail['phone_one'];
         $this->address = $shippingDetail['address'];
         $this->email = $email;
-        $this->shippingAgency = ShippingAgency::whereId($shippingDetail['city']['id'])->first();
     }
 
     public function saveUserShippingAddress() {

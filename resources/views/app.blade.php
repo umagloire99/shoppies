@@ -2,11 +2,11 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <meta name="title" content="HappyCute">
+    <meta name="title" content="Shoppies">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>{{ __('general.our-products-for-everyone') }} - HappyCute</title>
+    <title>{{ __('general.our-products-for-everyone') }} - Shoppies</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
@@ -17,17 +17,17 @@
     <meta name="keywords" content="{{ config('app.keywords') }}">
 
     <!-- Twitter Meta Data -->
-    <meta name="twitter:app:name:iphone" content="{{ config('app.name', 'HappyCute')  }}">
+    <meta name="twitter:app:name:iphone" content="{{ config('app.name', 'Shoppies')  }}">
     <meta name="twitter:app:id:iphone" content="{{ config('app.apple_id')  }}">
-    <meta name="twitter:app:name:ipad" content="{{ config('app.name', 'HappyCute')  }}">
+    <meta name="twitter:app:name:ipad" content="{{ config('app.name', 'Shoppies')  }}">
     <meta name="twitter:app:id:ipad" content="{{ config('app.apple_id') }}">
     <meta name="twitter:app:name:googleplay" content="{{ config('app.name')  }}">
     <meta name="twitter:app:id:googleplay" content="{{ config('app.google_play_id') }}">
 
     <!-- App Link Meta Data -->
-    <meta property="al:ios:app_name" content="{{ config('app.name', 'HappyCute')  }}">
+    <meta property="al:ios:app_name" content="{{ config('app.name', 'Shoppies')  }}">
     <meta property="al:ios:app_store_id" content="{{ config('app.apple_id')  }}">
-    <meta property="al:android:app_name" content="{{ config('app.name', 'HappyCute')  }}">
+    <meta property="al:android:app_name" content="{{ config('app.name', 'Shoppies')  }}">
     <meta property="al:android:package" content="{{ config('app.android_bundle')  }}"/>
 
     <!-- MINIFIED -->

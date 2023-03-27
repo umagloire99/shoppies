@@ -38,23 +38,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="price" class="text-small text-uppercase">{{ __('Price') }}</label>
-                            <input id="price" type="number" class="form-control form-control-lg" name="price"
-                                   value="{{ old('price') }}" >
-                            @error('price')<span class="text-danger">{{ $message }}</span>@enderror
+                <div class="d-flex flex-wrap">
+                    @foreach($countries as $country)
+                        <div class="col-6">
+                            <label  class="text-small text-uppercase">{{ __($country->name) }}</label>
+                            <div class="row ">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input  type="number" class="form-control form-control-lg"
+                                               name="{{$country->short_name.'_price'}}"
+                                               placeholder="Price"
+                                               value="{{ old($country->short_name.'_price') }}">
+                                        @error($country->short_name.'_price')<span class="text-danger">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input  type="number" placeholder="Quantity"
+                                               class="form-control form-control-lg" name="{{$country->short_name.'_quantity'}}"
+                                               value="{{ old($country->short_name.'_quantity') }}">
+                                        @error($country->short_name.'_quantity')<span class="text-danger">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="quantity" class="text-small text-uppercase">{{ __('quantity') }}</label>
-                            <input id="quantity" type="number" max="10000" class="form-control form-control-lg" name="quantity"
-                                   value="{{ old('quantity') }}" >
-                            @error('quantity')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -62,9 +70,9 @@
                             <label for="category_id">Category</label>
                             <br/>
                             <select name="category_id" id="category_id" class="form-control">
-                                <option value="">---</option>
                                 @forelse($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : null }}>
+                                    <option
+                                        value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : null }}>
                                         {{ $category->name }}
                                     </option>
                                 @empty
@@ -75,34 +83,8 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="tags">Tags</label>
-                            <select name="tags[]" id="tags" class="form-control select2" multiple="multiple">
-                                @forelse($tags as $tag)
-                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                            @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="featured">Featured</label>
-                            <select name="featured" id="featured" class="form-control">
-                                <option value="">---</option>
-                                <option value="1" {{ old('featured') == "1" ? 'selected' : null }}>Yes</option>
-                                <option value="0" {{ old('featured') == "0" ? 'selected' : null }}>No</option>
-                            </select>
-                            @error('featured')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
-                                <option value="">---</option>
                                 <option value="1" {{ old('status') == "1" ? 'selected' : null }}>Active</option>
                                 <option value="0" {{ old('status') == "0" ? 'selected' : null }}>Inactive</option>
                             </select>
@@ -113,32 +95,37 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="description" class="text-small text-uppercase">{{ __('Description Fr') }}</label>
-                            <textarea name="description[fr]" rows="3" class="form-control summernote">{!! old('description[fr]') !!}</textarea>
+                            <label for="description"
+                                   class="text-small text-uppercase">{{ __('Description Fr') }}</label>
+                            <textarea name="description[fr]" rows="3"
+                                      class="form-control summernote">{!! old('description[fr]') !!}</textarea>
                             @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="description" class="text-small text-uppercase">{{ __('Description En') }}</label>
-                            <textarea name="description[en]" rows="3" class="form-control summernote">{!! old('description[en]') !!}</textarea>
+                            <label for="description"
+                                   class="text-small text-uppercase">{{ __('Description En') }}</label>
+                            <textarea name="description[en]" rows="3"
+                                      class="form-control summernote">{!! old('description[en]') !!}</textarea>
                             @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
                             <label for="details" class="text-small text-uppercase">{{ __('Details Fr') }}</label>
-                            <textarea name="details[fr]" rows="3" class="form-control summernote">{!! old('details[fr]') !!}</textarea>
+                            <textarea name="details[fr]" rows="3"
+                                      class="form-control summernote">{!! old('details[fr]') !!}</textarea>
                             @error('details')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="details" class="text-small text-uppercase">{{ __('Details En') }}</label>
-                            <textarea name="details[en]" rows="3" class="form-control summernote">{!! old('details[en]') !!}</textarea>
+                            <textarea name="details[en]" rows="3"
+                                      class="form-control summernote">{!! old('details[en]') !!}</textarea>
                             @error('details')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -147,14 +134,16 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="usages" class="text-small text-uppercase">{{ __('Usages Fr') }}</label>
-                            <textarea name="usages[fr]" rows="3" class="form-control summernote">{!! old('usages[fr]') !!}</textarea>
+                            <textarea name="usages[fr]" rows="3"
+                                      class="form-control summernote">{!! old('usages[fr]') !!}</textarea>
                             @error('usages')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="usages" class="text-small text-uppercase">{{ __('Usages En') }}</label>
-                            <textarea name="usages[en]" rows="3" class="form-control summernote">{!! old('usages[en]') !!}</textarea>
+                            <textarea name="usages[en]" rows="3"
+                                      class="form-control summernote">{!! old('usages[en]') !!}</textarea>
                             @error('usages')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -163,14 +152,16 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="features" class="text-small text-uppercase">{{ __('Features Fr') }}</label>
-                            <textarea name="features[fr]" rows="3" class="form-control summernote">{!! old('features[fr]') !!}</textarea>
+                            <textarea name="features[fr]" rows="3"
+                                      class="form-control summernote">{!! old('features[fr]') !!}</textarea>
                             @error('features')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="features" class="text-small text-uppercase">{{ __('Features En') }}</label>
-                            <textarea name="features[en]" rows="3" class="form-control summernote">{!! old('features[en]') !!}</textarea>
+                            <textarea name="features[en]" rows="3"
+                                      class="form-control summernote">{!! old('features[en]') !!}</textarea>
                             @error('features')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -180,7 +171,8 @@
                         <label for="images">images/video</label>
                         <br>
                         <div class="file-loading">
-                            <input type="file" name="images[]"required id="product-images" class="file-input-overview" multiple="multiple">
+                            <input type="file" name="images[]" required id="product-images" class="file-input-overview"
+                                   multiple="multiple">
                         </div>
                         @error('images')<span class="text-danger">{{ $message }}</span>@enderror
                     </div>

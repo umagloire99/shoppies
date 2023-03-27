@@ -47,14 +47,6 @@ class LinkSeeder extends Seeder
         ]);
 
         Link::whereStatus(true)->create([
-            'title' => 'Coupons',
-            'as' => 'Coupon',
-            'to' => 'admin.coupons.index',
-            'icon' => 'fas fa-gift',
-            'status' => 1,
-        ]);
-
-        Link::whereStatus(true)->create([
             'title' => 'Product Reviews',
             'as' => 'Review',
             'to' => 'admin.reviews.index',
@@ -71,14 +63,6 @@ class LinkSeeder extends Seeder
         ]);
 
         Link::whereStatus(true)->create([
-            'title' => 'States',
-            'as' => 'State',
-            'to' => 'admin.states.index',
-            'icon' => 'fas fa-map-marker-alt',
-            'status' => 1,
-        ]);
-
-        Link::whereStatus(true)->create([
             'title' => 'Cities',
             'as' => 'City',
             'to' => 'admin.cities.index',
@@ -86,13 +70,6 @@ class LinkSeeder extends Seeder
             'status' => 1,
         ]);
 
-        Link::whereStatus(true)->create([
-            'title' => 'Tags',
-            'as' => 'Tag',
-            'to' => 'admin.tags.index',
-            'icon' => 'fas fa-tags',
-            'status' => 1,
-        ]);
 
         Link::whereStatus(true)->create([
             'title' => 'User Addresses',
@@ -102,29 +79,6 @@ class LinkSeeder extends Seeder
             'status' => 1,
         ]);
 
-        Link::whereStatus(true)->create([
-            'title' => 'Shipping Agencies',
-            'as' => 'Shipping',
-            'to' => 'admin.shipping_agencies.index',
-            'icon' => 'fas fa-shipping-fast',
-            'status' => 1,
-        ]);
-
-        Link::whereStatus(true)->create([
-            'title' => 'Payment methods',
-            'as' => 'Payment',
-            'to' => 'admin.payment_methods.index',
-            'icon' => 'fas fa-money-check-alt',
-            'status' => 1,
-        ]);
-
-        Link::whereStatus(true)->create([
-            'title' => 'Contacts',
-            'as' => 'Contact',
-            'to' => 'admin.contacts.index',
-            'icon' => 'far fa-comment',
-            'status' => 1,
-        ]);
 
         Link::whereStatus(true)->create([
             'title' => 'Pages',

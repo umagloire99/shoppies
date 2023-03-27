@@ -18,6 +18,9 @@ class CreateProductCountriesTable extends Migration
             $table->foreignId('product_id')->constrained()->on('products')->cascadeOnDelete();
             $table->foreignId('country_id')->constrained()->on('countries')->cascadeOnDelete();
             $table->float('price')->default(0.0);
+            $table->integer('quantity')->nullable();
+
+            $table->unique(['product_id', 'country_id']);
             $table->timestamps();
         });
     }

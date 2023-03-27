@@ -7,7 +7,12 @@
                 Orders
             </h6>
             <div class="ml-auto">
-
+                    <a href="{{ route('admin.orders.export') }}" class="btn btn-primary">
+                    <span class="icon text-white-50">
+                        <i class="fa fa-file-export"></i>
+                    </span>
+                        <span class="text">Export</span>
+                    </a>
             </div>
         </div>
 
@@ -19,7 +24,8 @@
                 <tr>
                     <th>Ref ID</th>
                     <th>User</th>
-                    <th>Payment method</th>
+                    <th>Phone</th>
+                    <th>Address</th>
                     <th>Amount</th>
                     <th>Status</th>
                     <th>Create date</th>
@@ -34,8 +40,9 @@
                             </a>
                         </td>
                         <td>{{ $order->user->full_name }}</td>
-                        <td>{{ $order->paymentMethod->name }}</td>
-                        <td>{{ $order->currency() . $order->total }}</td>
+                        <td>{{ $order->userAddress?->phone_one }}</td>
+                        <td>{{ $order->userAddress?->country?->name  }}, {{ $order->userAddress?->city?->name  }}, {{ $order->userAddress->address_title }}</td>
+                        <td>{{ $order->currency() . number_format($order->total) }}</td>
                         <td>{!! $order->statusWithBadge() !!}</td>
                         <td>{{ $order->created_at->format('Y-m-d h:i a') }}</td>
                         <td>

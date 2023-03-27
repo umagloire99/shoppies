@@ -41,7 +41,7 @@ class CartController extends Controller
     public function addToCart(Request $request, $id): RedirectResponse
     {
         $quantity = $request->get('quantity', 1);
-        if ($product = Product::whereId($id)->first()) {
+        if ($product = getProducts()->where('products.id',$id)->first()) {
             $validator = Validator::make($request->all(), [
                 'quantity' => "required|max:" . $product->quantity
             ]);
@@ -105,22 +105,11 @@ class CartController extends Controller
      */
     public function checkout(): Response
     {
-        $states = State::all()->transform(function (State $state) {
-            return [
-                'id' => $state->id,
-                'name' => $state,
-            ];
-        });
-        $agencies = ShippingAgency::whereStatus(true)->get()
-            ->transform(function (ShippingAgency $shippingAgency) {
+        $cities = getCurrentCountry()->cities
+            ->transform(function ($city) {
                 return [
-                    'id' => $shippingAgency->id,
-                    'name' => $shippingAgency->name,
-                    'city_id' => $shippingAgency->city->id,
-                    'city_name' => $shippingAgency->city->name,
-                    'cost' => (int)$shippingAgency->cost,
-                    'can_pay_on_delivery' => $shippingAgency->can_pay_on_delivery,
-                    'mode' => !$shippingAgency->out_of_town ? __('general.shipping') : __('general.expedition')
+                    'id' => $city->id,
+                    'name' => $city->name,
                 ];
             });
         $paymentMethods = PaymentMethod::whereStatus(true)->get()->transform(function (PaymentMethod $paymentMethod) {
@@ -131,8 +120,8 @@ class CartController extends Controller
             ];
         });
         return Inertia::render('Cart/checkout', [
-            'agencies' => $agencies,
-            'states' => $states,
+            'cities' => $cities,
+            'states' => [],
             'paymentMethods' => $paymentMethods
         ]);
     }

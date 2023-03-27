@@ -17,9 +17,8 @@ use Gloudemans\Shoppingcart\Exceptions\CartAlreadyStoredException;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
-use Meneses\LaravelMpdf\Facades\LaravelMpdf as PDF;
+use PDF;
 
 class CartService
 {
@@ -129,16 +128,15 @@ class CartService
         $order->ref_id = generateRef();
         $order->user()->associate($shippingInfo->user);
         $order->userAddress()->associate($shippingInfo->userAddress);
-        $order->shippingAgency()->associate($shippingInfo->shippingAgency);
         $order->paymentMethod()->associate($paymentMethod);
         $order->subtotal = $cart->sum('total_discount_price');
-        $order->shipping = $shippingInfo->shippingAgency->cost;
-        $order->total = $shippingInfo->shippingAgency->cost + $cart->sum('total_discount_price');
+        $order->total = $cart->sum('total_discount_price');
         $order->save();
 
         foreach ($cart as $cartItem) {
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
+            $orderProduct->price = $cartItem['price'];
             $orderProduct->product_id = $cartItem['id'];
             $orderProduct->discount = $cartItem['discount'] ?: 0;
             $orderProduct->quantity = $cartItem['quantity'];
@@ -180,18 +178,15 @@ class CartService
         $cart = collect($this->restore($username));
         $user = User::whereUsername($username)->first();
         $address = $user->addresses()->first();
-        $shipping = ShippingAgency::whereCityId($address->city_id)->first();
         DB::beginTransaction();
         $order = new Order();
         $order->order_status =  1;
         $order->ref_id = generateRef();
         $order->user()->associate($user);
         $order->userAddress()->associate($address);
-        $order->shippingAgency()->associate($shipping);
         $order->paymentMethod()->associate($paymentMethod);
         $order->subtotal = $cart->sum('total_discount_price');
-        $order->shipping = $shipping->cost;
-        $order->total = $shipping->cost + $cart->sum('total_discount_price');
+        $order->total = $cart->sum('total_discount_price');
         $order->save();
 
         foreach ($cart as $cartItem) {

@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Services\Exports\OrdersExport;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class OrderController extends Controller
 {
@@ -16,8 +19,7 @@ class OrderController extends Controller
      * @return Application|Factory|View
      */
     public function index() {
-        $orders = Order::with('user', 'paymentMethod')
-            ->when(\request()->keyword != null, function ($query) {
+        $orders = Order::when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
             ->when(\request()->status != null, function ($query) {
@@ -26,6 +28,26 @@ class OrderController extends Controller
             ->orderBy(\request()->sortBy ?? 'created_at', \request()->orderBy ?? 'desc')
             ->paginate(\request()->limitBy ?? 10);
         return view('backend.orders.index', compact('orders'));
+    }
+
+    /**
+     * @return BinaryFileResponse
+     */
+    public function export(): BinaryFileResponse
+    {
+        $orders = Order::when(\request()->keyword != null, function ($query) {
+            $query->search(\request()->keyword);
+        })
+            ->when(\request()->status != null, function ($query) {
+                $query->whereOrderStatus(\request()->status);
+            })
+            ->orderBy(\request()->sortBy ?? 'created_at', \request()->orderBy ?? 'desc');
+        if (\request()->limitBy) {
+            $orders = $orders->limit(\request()->limitBy);
+        }
+        $orders = $orders->get();
+        return Excel::download(new OrdersExport($orders), 'orders.xlsx');
+
     }
 
     public function show(Order $order): View
@@ -58,7 +80,7 @@ class OrderController extends Controller
         $order->update(['order_status'=> $request->order_status]);
 
         if ($order->transaction) {
-            $order->update([
+            $order->transaction()->update([
                 'transaction_status' => $request->order_status,
             ]);
         } else {

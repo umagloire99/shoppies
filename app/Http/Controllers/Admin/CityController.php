@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CityRequest;
 use App\Models\City;
+use App\Models\Country;
 use App\Models\State;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class CityController extends Controller
 {
     public function index(): View
     {
-        $cities = City::with('state')
+        $cities = City::with('country')
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -23,16 +24,16 @@ class CityController extends Controller
                 $query->whereStatus(\request()->status);
             })
             ->orderBy(\request()->sortBy ?? 'id', \request()->orderBy ?? 'desc')
-            ->paginate(\request()->limitBy ?? 10);
+            ->paginate(\request()->limitBy ?? 20);
 
         return view('backend.cities.index', compact('cities'));
     }
 
     public function create(): View
     {
-        $states = State::get(['id', 'name']);
+        $countries = Country::get(['id', 'name']);
 
-        return view('backend.cities.create', compact('states'));
+        return view('backend.cities.create', compact('countries'));
     }
 
     public function store(CityRequest $request): RedirectResponse
@@ -55,9 +56,9 @@ class CityController extends Controller
     public function edit(City $city): View
     {
 
-        $states = State::get(['id', 'name']);
+        $countries = Country::get(['id', 'name']);
 
-        return view('backend.cities.edit', compact('city', 'states'));
+        return view('backend.cities.edit', compact('city', 'countries'));
     }
 
     public function update(CityRequest $request, City $city): RedirectResponse

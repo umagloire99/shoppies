@@ -21,16 +21,6 @@
             </div>
             <div class="col-2">
                 <div class="form-group">
-                    <select name="sortBy" class="form-control">
-                        <option value="">---</option>
-                        <option value="id" {{ old('sortBy', request()->input('sortBy') == 'id' ? 'selected' : '') }}>ID</option>
-                        <option value="name" {{ old('sortBy', request()->input('sortBy') == 'name' ? 'selected' : '') }}>Name</option>
-                        <option value="created_at" {{ old('sortBy', request()->input('sortBy') == 'created_at' ? 'selected' : '') }}>Create At</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-group">
                     <select name="orderBy" class="form-control">
                         <option value="">---</option>
                         <option value="asc" {{ old('orderBy', request()->input('orderBy') == 'asc' ? 'selected' : '') }}>Ascending</option>

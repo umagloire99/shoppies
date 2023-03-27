@@ -13,6 +13,14 @@ class Country extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(ProductCountry::class, 'product_countries')->withPivot(['price']);
+        return $this->belongsToMany(Product::class, ProductCountry::class)->withPivot(['price', 'quantity']);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function cities(): HasMany
+    {
+        return $this->hasMany(City::class);
     }
 }

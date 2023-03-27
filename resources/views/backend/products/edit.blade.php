@@ -41,23 +41,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="price" class="text-small text-uppercase">{{ __('Price') }}</label>
-                            <input id="price" type="number" class="form-control form-control-lg" name="price"
-                                   value="{{ old('price', $product->price) }}" >
-                            @error('price')<span class="text-danger">{{ $message }}</span>@enderror
+                <div class="d-flex flex-wrap">
+                    @foreach($countries as $country)
+                        <div class="col-6">
+                            <label  class="text-small text-uppercase">{{ __($country['name']) }}</label>
+                            <div class="row ">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input  type="number" class="form-control form-control-lg"
+                                                name="{{$country['short_name'].'_price'}}"
+                                                placeholder="Price"
+                                                value="{{ old($country['short_name'].'_price', $country['price']) }}">
+                                        @error($country['short_name'].'_price')<span class="text-danger">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input  type="number" placeholder="Quantity"
+                                                class="form-control form-control-lg" name="{{$country['short_name'].'_quantity'}}"
+                                                value="{{ old($country['short_name'].'_quantity', $country['quantity'] )}}">
+                                        @error($country['short_name'].'_quantity')<span class="text-danger">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="quantity" class="text-small text-uppercase">{{ __('quantity') }}</label>
-                            <input id="quantity" type="number" max="10000" class="form-control form-control-lg" name="quantity"
-                                   value="{{ old('quantity', $product->quantity) }}" >
-                            @error('quantity')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -78,40 +86,6 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label for="tags">Tags</label>
-
-                            <select name="tags[]" id="tags" class="form-control select2" multiple="multiple">
-                                @forelse($tags as $tag)
-                                    <option value="{{ $tag->id }}"
-                                        {{ in_array($tag->id, $product->tags->pluck('id')->toArray()) ? 'selected' : null }}>
-                                        {{ $tag->name }}
-                                    </option>
-                                @empty
-                                @endforelse
-                            </select>
-                            @error('tags')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="featured">Featured</label>
-                            <select name="featured" id="featured" class="form-control">
-                                <option
-                                    value="1" {{ old('featured', $product->featured) == "Yes" ? 'selected' : null }}>Yes
-                                </option>
-                                <option value="0" {{ old('featured', $product->featured) == "No" ? 'selected' : null }}>
-                                    No
-                                </option>
-                            </select>
-                            @error('featured')<span class="text-danger">{{ $message }}</span>@enderror
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="1" {{ old('status', $product->status) == "Active" ? 'selected' : null }}>
@@ -124,6 +98,7 @@
                             @error('status')<span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-6">

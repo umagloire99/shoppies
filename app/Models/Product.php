@@ -84,7 +84,7 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function productCountry()
+    public function productCountries()
     {
         return $this->hasMany(ProductCountry::class);
     }
@@ -121,6 +121,22 @@ class Product extends Model
             ->whereDate('end_date', '>=', now());
     }
 
+    public function getPriceAttribute($value)
+    {
+        if ($this->pivot && $this->pivot->price) {
+            return $this->pivot->price;
+        }
+        return $value;
+    }
+
+    public function getQuantityAttribute($value)
+    {
+        if ($this->pivot && $this->pivot->quantity) {
+            return $this->pivot->quantity;
+        }
+        return $value;
+    }
+
     public function getImgAttribute() {
         if ($this->firstMedia) {
             return asset('storage/images/products/' . $this->firstMedia->file_name);
@@ -129,13 +145,4 @@ class Product extends Model
         }
     }
 
-//    public function ratings(): HasMany
-//    {
-//        return $this->hasMany(Rating::class);
-//    }
-//
-//    public function rate()
-//    {
-//        return $this->ratings->isNotEmpty() ? $this->ratings()->sum('value') / $this->ratings()->count() : 0;
-//    }
 }

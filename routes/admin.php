@@ -52,9 +52,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('user_addresses', UserAddressController::class);
     Route::resource('shipping_agencies', ShippingAgencyController::class);
     Route::resource('payment_methods', PaymentMethodController::class);
+    Route::get('orders/export', [OrderController::class, 'export'])->name('orders.export');
     Route::resource('orders', OrderController::class)->except('create', 'edit');
     Route::resource('settings', SettingController::class)->only('index', 'update');
-    Route::resource('contacts', ContactController::class)->except('create', 'edit', 'update');
     Route::resource('links', LinkController::class)->except('show');
     Route::resource('pages', PageController::class);
 });

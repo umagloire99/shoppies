@@ -187,8 +187,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        ViewServiceProvider::class
-
+        ViewServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -250,6 +252,9 @@ return [
         'JsonLd' => Artesaos\SEOTools\Facades\JsonLd::class,
         'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

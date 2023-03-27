@@ -87,7 +87,9 @@ namespace App\Models{
  * @property string $currency_code
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductCountry> $products
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\City> $cities
+ * @property-read int|null $cities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
  * @property-read int|null $products_count
  * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
@@ -485,8 +487,8 @@ namespace App\Models{
  * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Order> $orders
  * @property-read int|null $orders_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductCountry> $productCountry
- * @property-read int|null $product_country_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductCountry> $productCountries
+ * @property-read int|null $product_countries_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Review> $reviews
  * @property-read int|null $reviews_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
@@ -530,6 +532,7 @@ namespace App\Models{
  * @property int $product_id
  * @property int $country_id
  * @property float $price
+ * @property int|null $quantity
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Country $country
@@ -542,6 +545,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCountry whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCountry wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCountry whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProductCountry whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ProductCountry whereUpdatedAt($value)
  */
 	class ProductCountry extends \Eloquent {}

@@ -57,16 +57,11 @@
                   >
                 </div>
                 <div class="d-flex align-items-center">
-                  <span
-                    >{{ form.city ? form.city.mode : $t("shipping") }}:</span
+                  <span>{{  $t("shipping") }}:</span
                   >
                   <span
                     class="d-block ml-auto text-secondary font-weight-bold"
-                    >{{
-                      form.city
-                        ? $h.formatPrice(form.city.cost)
-                        : $t("please-select-your-city")
-                    }}</span
+                    >0 XAF</span
                   >
                 </div>
               </div>
@@ -80,15 +75,9 @@
                       text-secondary
                       fs-24
                       font-weight-bold
-                    "
-                    >{{
-                      $h.formatPrice(
-                        form.city
-                          ? $page.props.cart.total_price + form.city.cost
-                          : $page.props.cart.total_price + 0
-                      )
-                    }}</span
-                  >
+                    ">
+                      {{ $h.formatPrice($page.props.cart.total_price) }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -131,8 +120,8 @@
                       v-model="form.city"
                       :error="errors.city"
                       :placeholder="$t('select-your-city')"
-                      :options="agencies"
-                      label_option="city_name"
+                      :options="cities"
+                      label_option="name"
                     />
                   </div>
                 </div>
@@ -249,8 +238,7 @@ export default {
   components: { TextInput, SelectInput, UserLoadingButton, UserBreadcrumb },
   layout: MainLayout,
   props: {
-    states: Array,
-    agencies: Array,
+    cities: Array,
     paymentMethods: Array,
     errors: Object,
   },
@@ -297,12 +285,6 @@ export default {
     };
   },
   methods: {
-    submitAddress() {
-      Inertia.post(this.route("add.shipping"), this.form, {
-        onStart: () => (this.loadingShipping = true),
-        onFinish: () => (this.loadingShipping = false),
-      });
-    },
     sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     },
@@ -321,8 +303,7 @@ export default {
               this.mtnMessage.text = response.message;
               let vm = this;
               while (this.paymentStatus === "PENDING") {
-                axios
-                  .get(
+                axios.get(
                     this.route("check.momo.payment", [
                       this.pay_code,
                       response.paymentId,

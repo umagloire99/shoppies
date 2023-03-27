@@ -7,7 +7,7 @@
     <meta name="author" content="Ali">
     <meta name="description" content="E-commerce Application">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title> HappyCute</title>
+    <title> Shoppies</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png')}}">

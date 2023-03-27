@@ -344,3 +344,14 @@ if (!function_exists('monetbilHook')) {
         ];
     }
 }
+
+function getCurrentCountry()
+{
+    $countryCode = str_replace('/', '', request()->route()->getPrefix());
+    return \App\Models\Country::whereShortName($countryCode)->first();
+}
+
+function getProducts()
+{
+    return getCurrentCountry()->products();
+}

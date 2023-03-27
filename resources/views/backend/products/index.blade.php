@@ -25,13 +25,9 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
                     <th>Name</th>
-                    <th>Feature</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    <th>Tags</th>
-                    <th>Category</th>
                     <th>Status</th>
                     <th>Created at</th>
                     <th class="text-center" style="width: 30px;">Action</th>
@@ -41,20 +37,17 @@
                 @forelse($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
-                        <td>
-                            @if($product->firstMedia)
-                            <img src="{{ asset('storage/images/products/' . $product->firstMedia->file_name) }}"
-                                 width="60" height="60" alt="{{ $product->name }}">
-                            @else
-                                <img src="{{ asset('img/no-img.png') }}" width="60" height="60" alt="{{ $product->name }}">
-                            @endif
-                        </td>
                         <td><a href="{{ route('admin.products.show', $product->id) }}">{{ $product->name }}</a></td>
-                        <td>{{ $product->featured }}</td>
-                        <td>{{ $product->quantity }}</td>
-                        <td>SR {{ $product->price }}</td>
-                        <td class="text-danger">{{ $product->tags->pluck('name')->join(', ') }}</td>
-                        <td>{{ $product->category ? $product->category->name : NULL }}</td>
+                        <td>
+                            @foreach($product->productCountries as $productCountry)
+                                <span>{{$productCountry->country->short_name}}: {{ number_format($productCountry->quantity)  }}</span><br/>
+                            @endforeach
+                        </td>
+                        <td>
+                            @foreach($product->productCountries as $productCountry)
+                                <span>{{$productCountry->country->short_name}}: {{ number_format($productCountry->price)  }} XAF</span><br/>
+                            @endforeach
+                        </td>
                         <td>{{ $product->status }}</td>
                         <td>{{ $product->created_at }}</td>
                         <td>

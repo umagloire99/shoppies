@@ -139,6 +139,26 @@
             "name": "Limbe",
             "country_id": "1",
             "fee": 0
+        },
+        {
+            "name": "Libreville",
+            "country_id": "2",
+            "fee": 0
+        },
+        {
+            "name": "Franceville",
+            "country_id": 2,
+            "fee": 0
+        },
+        {
+            "name": "Port-Gentil",
+            "country_id": 2,
+            "fee": 0
+        },
+        {
+            "name": "Moanda",
+            "country_id": 2,
+            "fee": 0
         }
     ]
 }

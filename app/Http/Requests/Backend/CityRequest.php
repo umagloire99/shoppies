@@ -28,7 +28,7 @@ class CityRequest extends FormRequest
             {
                 return [
                     'name' => ['required', 'max:255', 'unique:cities'],
-                    'state_id' => ['required'],
+                    'country_id' => ['required'],
                 ];
             }
             case 'PUT':
@@ -36,7 +36,7 @@ class CityRequest extends FormRequest
             {
                 return [
                     'name' => ['required', 'max:255', 'unique:cities,name,'.$this->route()->city->id],
-                    'state_id' => ['required'],
+                    'country_id' => ['required'],
                 ];
             }
             default: break;

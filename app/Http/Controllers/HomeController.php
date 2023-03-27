@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\EventResource;
 use App\Models\Category;
 use App\Models\Event;
-use App\Models\Media;
 use App\Models\Product;
-use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -21,6 +19,7 @@ class HomeController extends Controller
      */
     public function index(): Response
     {
+
         setMetaInfo();
         $events = Event::limit(5)->get()->transform(function (Event $event) {
             return (new EventResource($event));
@@ -31,10 +30,10 @@ class HomeController extends Controller
             ->get()->transform(function ($category) {
                 return formatCategory($category, 2);
             });
-        $products = Product::with('firstMedia')
+
+        $products = getCurrentCountry()->products()
             ->inRandomOrder()
             ->active()
-            ->hasQuantity()
             ->activeCategory()
             ->take(20)
             ->get()->transform(function (Product $product) {

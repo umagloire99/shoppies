@@ -3,11 +3,14 @@
 namespace App\Providers;
 
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\VerifyCountryCode;
+use App\Models\Country;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Torann\GeoIP\Facades\GeoIP;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -56,6 +59,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/admin.php'));
         });
     }
+
 
     /**
      * Configure the rate limiters for the application.

@@ -29,7 +29,7 @@ class ProductsTableSeeder extends Seeder
             $product->description = ['en' => $faker->paragraph, 'fr' => $faker->paragraph];
             $product->features = ['en' => $faker->paragraph, 'fr' => $faker->paragraph];
             $product->usages = ['en' => $faker->paragraph, 'fr' => $faker->paragraph];
-            $product->price = $faker->numberBetween(5, 200);
+            $product->price = 0;
             $product->quantity = $faker->numberBetween(10, 100);
             $product->category_id = $categories->random();
             $product->status = true;
@@ -42,6 +42,7 @@ class ProductsTableSeeder extends Seeder
                 $productCountry->product_id = $product->id;
                 $productCountry->country_id = $country->id;
                 $productCountry->price = $faker->numberBetween(5, 100000);
+                $productCountry->quantity = $faker->numberBetween(5, 50);
                 $productCountry->save();
             }
 

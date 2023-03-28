@@ -22,12 +22,14 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingSeeder::class);
         $this->call(ShippingAgencySeeder::class);
         $this->call(AdminSeeder::class);
-        $this->call(EventTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(ReviewSeeder::class);
-        $this->call(ProductMediaTableSeeder::class);
-        $this->call(EventMediaTableSeeder::class);
+        if (app()->environment('local')) {
+            $this->call(EventTableSeeder::class);
+            $this->call(ProductsTableSeeder::class);
+            $this->call(UserSeeder::class);
+            $this->call(ReviewSeeder::class);
+            $this->call(ProductMediaTableSeeder::class);
+            $this->call(EventMediaTableSeeder::class);
+        }
 //        $this->call(OrderSeeder::class);
 //        $this->call(ProductMediaTableSeeder::class);
     }

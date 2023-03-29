@@ -1,6 +1,7 @@
 <table>
     <thead>
     <tr>
+        <th>Ref ID</th>
         <th>Name</th>
         <th>Phone</th>
         <th>Country</th>
@@ -13,6 +14,7 @@
     <tbody>
     @foreach($orders as $order)
         <tr>
+            <td>{{ $order->ref_id  }}</td>
             <td>{{ $order->user->full_name }}</td>
             <td>{{ $order->userAddress?->phone_one }}</td>
             <td>{{ $order->userAddress?->country?->name  }}</td>

@@ -136,10 +136,12 @@ class ProductController extends Controller
             foreach (Country::all() as $country) {
                 $price = $request->get($country->short_name.'_price');
                 $quantity = $request->get($country->short_name.'_quantity');
-                ProductCountry::updateOrCreate(
-                    ['product_id' => $product->id, 'country_id' => $country->id],
-                    ['price' => $price, 'quantity' => $quantity]
-                );
+                if ($price && $quantity) {
+                    ProductCountry::updateOrCreate(
+                        ['product_id' => $product->id, 'country_id' => $country->id],
+                        ['price' => $price, 'quantity' => $quantity]
+                    );
+                }
             }
 
             if ($request->images && count($request->images) > 0) {

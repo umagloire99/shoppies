@@ -15,7 +15,8 @@ class ProductCountry extends Model
     protected $fillable = [
         'country_id',
         'product_id',
-        'price'
+        'price',
+        'quantity'
     ];
 
     /**

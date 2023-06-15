@@ -40,10 +40,9 @@
         href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendors/fontawesome-pro-5/css/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/app.css')  }}">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ asset('images/favicon.jpg') }}">
     @routes
-    <script src="{{ mix('/js/app.js') }}" defer></script>
 </head>
 <body>
 @inertia
@@ -52,6 +51,10 @@
     window.default_locale = "{{ \Illuminate\Support\Facades\App::currentLocale() }}";
     window.fallback_locale = "{{ config('app.fallback_locale') }}";
 </script>
+
+<script src="{{ mix('/js/app.js') }}" defer></script>
+<script src="{{ mix('js/vendor.js') }}"></script>
+<script src="{{ mix('js/manifest.js') }}"></script>
 <!-- Vendors scripts -->
 <script src="{{ asset('vendors/jquery.min.js') }}"></script>
 <script src="{{ asset('vendors/jquery-ui/jquery-ui.min.js') }}"></script>

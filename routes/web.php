@@ -70,15 +70,15 @@ Route::group([
 
 function getCountryCode(): string
 {
-    try {
-        $countryCode = strtolower(geoip()->getLocation()->iso_code);
+    // try {
+    //     $countryCode = strtolower(geoip()->getLocation()->iso_code);
 
-        if (!Country::whereShortName($countryCode)->exists()) {
-            $countryCode = 'cm';
-        }
-    } catch (Exception $exception){
-        $countryCode = 'cm';
-    }
+    //     if (!Country::whereShortName($countryCode)->exists()) {
+    //         $countryCode = 'cm';
+    //     }
+    // } catch (Exception $exception){
+    //     $countryCode = 'cm';
+    // }
 
-    return $countryCode;
+    return 'cm';
 }

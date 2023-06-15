@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\ProductRequest;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Product;
-use App\Models\ProductCountry;
 use App\Models\Tag;
 use App\Services\ImageService;
 use App\Traits\ImageUploadTrait;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Models\ProductCountry;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\ProductRequest;
 
 class ProductController extends Controller
 {

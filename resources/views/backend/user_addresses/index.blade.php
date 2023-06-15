@@ -49,7 +49,7 @@
                             {{ $address->name }}
                             <p class="text-gray-400">{{ $address->email }}<br>{{ $address->phone_one.'/'.$address->phone_two }}</p>
                         </td>
-                        <td>{{ $address->city->state->country->name . ' - ' . $address->city->state->name . ' ' . $address->city->name}}</td>
+                        <td>{{ $address->country->name . ' - ' . $address->city?->name }}</td>
                         <td>{{ $address->zip_code }}</td>
                         <td>{{ $address->po_box }}</td>
                         <td>

@@ -1,14 +1,15 @@
 <template>
-    <home-header/>
-    <slot/>
-    <flash-message/>
-    <main-footer/>
-    <svg-icons/>
-    <back-to-top/>
-    <cart-canvas/>
-    <canvas-menu/>
-    <sign-in/>
-
+    <div>
+        <home-header />
+        <slot />
+        <flash-message />
+        <main-footer />
+        <svg-icons />
+        <back-to-top />
+        <cart-canvas />
+        <canvas-menu />
+        <sign-in />
+    </div>
 </template>
 
 <script>
@@ -23,10 +24,8 @@ import FlashMessage from "../Includes/FlashMessage";
 
 export default {
     name: "MainLayout",
-    components: {FlashMessage, SignIn, CanvasMenu, CartCanvas, BackToTop, SvgIcons, MainFooter, HomeHeader},
+    components: { FlashMessage, SignIn, CanvasMenu, CartCanvas, BackToTop, SvgIcons, MainFooter, HomeHeader },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -14,6 +14,7 @@ const path = require("path")
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .extract()
     .sass("resources/assets/scss/app.scss", "public/css")
     .autoload({
         "cash-dom": ["cash"]

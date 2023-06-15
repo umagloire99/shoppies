@@ -4,21 +4,20 @@
 namespace App\Services;
 
 
-use App\Models\Order;
-use App\Models\OrderProduct;
-use App\Models\OrderTransaction;
-use App\Models\PaymentMethod;
-use App\Models\Product;
-use App\Models\ShippingAgency;
-use App\Models\User;
-use App\Notifications\Backend\User\OrderCreatedNotification;
-use App\Notifications\Frontend\User\OrderThanksNotification;
-use Gloudemans\Shoppingcart\Exceptions\CartAlreadyStoredException;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use PDF;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\OrderProduct;
+use App\Models\PaymentMethod;
+use App\Models\OrderTransaction;
+use App\Notifications\Backend\User\OrderCreatedNotification;
+use App\Notifications\Frontend\User\OrderThanksNotification;
+use Gloudemans\Shoppingcart\Exceptions\CartAlreadyStoredException;
 
 class CartService
 {

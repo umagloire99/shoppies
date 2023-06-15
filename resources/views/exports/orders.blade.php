@@ -24,7 +24,7 @@
                     {{ $orderProduct->product->name }}(*{{ $orderProduct->quantity }});
                 @endforeach
             </td>
-            <td>{{ $order->statusWithBadge()  }}</td>
+            <td>{{ $order->status()  }}</td>
             <td>{{ $order->currency() . number_format($order->total) }}</td>
         </tr>
     @endforeach

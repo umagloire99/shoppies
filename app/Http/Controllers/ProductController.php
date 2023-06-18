@@ -50,11 +50,13 @@ class ProductController extends Controller
             'route' => route('shop.index', [$slug]),
             'name' => $category ? $category->name : 'all'
         ]);
-        setMetaInfo($category ? $category->name: null,
+        setMetaInfo(
+            $category ? $category->name : null,
             null,
-            $category ? asset('storage/images/categories/' . $category->media->file_name): null);
+            $category ? asset('storage/images/categories/' . $category->media->file_name) : null
+        );
 
-        return Inertia::render('Product/Index',[
+        return Inertia::render('Product/Index', [
             'products' => $products,
         ]);
     }
@@ -84,7 +86,7 @@ class ProductController extends Controller
             if (is_null($category->parent_id)) {
                 $categoriesIds = Category::whereParentId($category->id)
                     ->whereStatus(true)->pluck('id')->toArray();
-                $categoriesIds= array_merge($categoriesIds, [$category->id]);
+                $categoriesIds = array_merge($categoriesIds, [$category->id]);
                 $products = $products->whereHas('category', function ($query) use ($categoriesIds) {
                     $query->whereIn('id', $categoriesIds);
                 });
@@ -137,9 +139,11 @@ class ProductController extends Controller
             'sortingBy' => $this->sortingBy,
             'total_products' => $products->total(),
             'highlight' => $this->highlight,
-            'cover_image' =>  asset('storage/images/categories/' . $category->media->file_name)]);
+            'cover_image' =>  asset('storage/images/categories/' . $category->media->file_name)
+        ]);
         return $products;
     }
+    
     public function show($slug)
     {
 
@@ -151,9 +155,11 @@ class ProductController extends Controller
         if (!$product) {
             return back()->with(['warning' => __('general.resource-not-found')]);
         }
-        setMetaInfo($product->name,
+        setMetaInfo(
+            $product->name,
             $product->description,
-            $product->img);
+            $product->img
+        );
 
         $relatedProducts = getProducts()->with('firstMedia')->whereHas('category', function ($query) use ($product) {
             $query->whereId($product->category_id);

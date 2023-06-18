@@ -52,23 +52,23 @@
     window.fallback_locale = "{{ config('app.fallback_locale') }}";
 </script>
 
-<script src="{{ mix('/js/app.js') }}" defer></script>
-<script src="{{ mix('js/vendor.js') }}"></script>
-<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}" defer></script>
+<script src="{{ asset('js/vendor.js') }}" defer></script>
+<script src="{{ asset('js/manifest.js') }}" defer></script>
 <!-- Vendors scripts -->
-<script src="{{ asset('vendors/jquery.min.js') }}"></script>
-<script src="{{ asset('vendors/jquery-ui/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('vendors/bootstrap/bootstrap.bundle.js') }}"></script>
-<script src="{{ asset('vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
-<script src="{{ asset('vendors/slick/slick.min.js')}}"></script>
-<!-- <script src="{{ asset('vendors/waypoints/jquery.waypoints.min.js') }}"></script>    -->
+<script src="{{ asset('vendors/jquery.min.js') }}" defer></script>
+<script src="{{ asset('vendors/jquery-ui/jquery-ui.min.js') }}" defer></script>
+<script src="{{ asset('vendors/bootstrap/bootstrap.bundle.js') }}" defer></script>
+<script src="{{ asset('vendors/bootstrap-select/js/bootstrap-select.min.js') }}" defer></script>
+<script src="{{ asset('vendors/slick/slick.min.js')}}" defer></script>
+<script src="{{ asset('vendors/waypoints/jquery.waypoints.min.js') }}" defer></script>   
 <!-- <script src="{{ asset('vendors/counter/countUp.js') }}"></script> -->
-<script src="{{ asset('vendors/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{asset('vendors/hc-sticky/hc-sticky.min.js') }}"></script>
+<script src="{{ asset('vendors/magnific-popup/jquery.magnific-popup.min.js') }}" defer></script>
+<script src="{{ asset('vendors/hc-sticky/hc-sticky.min.js') }}" defer></script>
 <!-- <script src="{{ asset('vendors/jparallax/TweenMax.min.js') }}"></script> -->
 <!-- <script src="{{ asset('vendors/mapbox-gl/mapbox-gl.js') }}"></script> -->
 <!-- <script src="{{ asset('vendors/isotope/isotope.js') }}"></script> -->
 <!-- Theme scripts -->
-<script src="{{ asset('/js/theme.js') }}"></script>
+<script src="{{ asset('/js/theme.js') }}" defer></script>
 </body>
 </html>

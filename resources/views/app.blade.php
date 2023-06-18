@@ -61,13 +61,13 @@
 <script src="{{ asset('vendors/bootstrap/bootstrap.bundle.js') }}"></script>
 <script src="{{ asset('vendors/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('vendors/slick/slick.min.js')}}"></script>
-<script src="{{ asset('vendors/waypoints/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('vendors/counter/countUp.js') }}"></script>
+<!-- <script src="{{ asset('vendors/waypoints/jquery.waypoints.min.js') }}"></script>    -->
+<!-- <script src="{{ asset('vendors/counter/countUp.js') }}"></script> -->
 <script src="{{ asset('vendors/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{asset('vendors/hc-sticky/hc-sticky.min.js') }}"></script>
-<script src="{{ asset('vendors/jparallax/TweenMax.min.js') }}"></script>
-<script src="{{ asset('vendors/mapbox-gl/mapbox-gl.js') }}"></script>
-<script src="{{ asset('vendors/isotope/isotope.js') }}"></script>
+<!-- <script src="{{ asset('vendors/jparallax/TweenMax.min.js') }}"></script> -->
+<!-- <script src="{{ asset('vendors/mapbox-gl/mapbox-gl.js') }}"></script> -->
+<!-- <script src="{{ asset('vendors/isotope/isotope.js') }}"></script> -->
 <!-- Theme scripts -->
 <script src="{{ asset('/js/theme.js') }}"></script>
 </body>

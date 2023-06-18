@@ -1,7 +1,7 @@
 <template>
     <div :class="customClass"
          v-if="product">
-        <div class="card border-0" data-animate="fadeInUp">
+        <div class="card border-0">
             <a :href="route('products.show', product.slug)" class="position-relative">
                 <img :src="product.img" :alt="product.title">
                 <div class="card-img-overlay d-flex p-3 flex-column">

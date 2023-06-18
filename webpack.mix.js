@@ -26,7 +26,7 @@ mix.js('resources/js/app.js', 'public/js')
                 "~": path.resolve('resources/js'),
                 "@components": path.resolve('resources/app'),
             },
-            extensions: ["*", ".js", ".vue", ".json"],
+            extensions: ['.js', '.vue', '.json'],
         },
         output: {
             chunkFilename: 'js/[name].js?id=[chunkhash]',

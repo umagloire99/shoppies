@@ -1,4 +1,3 @@
-require('./bootstrap')
 import dayjs from "dayjs";
 import {createApp, h} from 'vue';
 import "./global-components";

@@ -47,23 +47,23 @@
                                 <div class="rate-input">
                                     <input type="radio" id="star5" name="rate" v-model="form.star" value="5">
                                     <label for="star5" title="text" class="mb-0 mr-1 lh-1">
-                                        <i class="fal fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </label>
                                     <input type="radio" id="star4" name="rate"  v-model="form.star" value="4">
                                     <label for="star4" title="text" class="mb-0 mr-1 lh-1">
-                                        <i class="fal fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </label>
                                     <input type="radio" id="star3" name="rate"  v-model="form.star" value="3">
                                     <label for="star3" title="text" class="mb-0 mr-1 lh-1">
-                                        <i class="fal fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </label>
                                     <input type="radio" id="star2" name="rate"  v-model="form.star" value="2">
                                     <label for="star2" title="text" class="mb-0 mr-1 lh-1">
-                                        <i class="fal fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </label>
                                     <input type="radio" id="star1" name="rate"  v-model="form.star" value="1">
                                     <label for="star1" title="text" class="mb-0 mr-1 lh-1">
-                                        <i class="fal fa-star"></i>
+                                        <i class="fa fa-star"></i>
                                     </label>
                                 </div>
                             </div>

@@ -21,7 +21,7 @@ class ImageService
             $size = $image->getSize();
             $type = $image->getMimeType();
             $product->media()->create([
-                'file_name' => $this->uploadImages($product->name, $image, $i, $this->folder, 540, 720),
+                'file_name' => $this->uploadImages($product->name, $image, $i, $this->folder, 500, null),
                 'file_size' => $size,
                 'file_type' => $type,
                 'file_status' => true,

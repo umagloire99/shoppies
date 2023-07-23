@@ -12,7 +12,7 @@
                                     <div class="card p-0 rounded-0 border-0">
                                         <a :href="file.path" class="card-img" data-gtf-mfp="true" target="_blank"
                                             data-gallery-id="02">
-                                            <img v-if="file.type === 'image'" :src="file.path" alt="product gallery"
+                                            <img v-if="file.type === 'image'" v-lazy="file.path" alt="product gallery"
                                                 class="w-100" />
                                             <video v-else class="w-100 h-100" controls :poster="file.path">
                                                 <source :src="file.path + '#t=2'">
@@ -24,7 +24,7 @@
                             <div class="slick-slider slider-nav mx-n1 mx-xl-0"
                                 data-slick-options='{"slidesToShow": 4,"vertical":true, "autoplay":false,"dots":false,"arrows":false,"asNavFor": ".slider-for","focusOnSelect": true,"responsive":[{"breakpoint": 1200,"settings": {"vertical": false}}]}'>
                                 <div class="box px-1 px-xl-0 py-4 pt-xl-0" v-for="file in product.media">
-                                    <img v-if="file.type === 'image'" :src="file.path" alt="product gallery"
+                                    <img v-if="file.type === 'image'" v-lazy="file.path" alt="product gallery"
                                         class="w-100" />
                                     <video v-else class="w-100">
                                         <source :src="file.path + '#t=5'">

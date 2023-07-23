@@ -7,7 +7,7 @@ import Notifications from 'vue3-vt-notifications'
 import {Inertia} from '@inertiajs/inertia'
 import vSelect from 'vue-select'
 import i18n from "./locales/i18n";
-
+import VueLazyLoad from 'vue3-lazyload'
 
 const el = document.getElementById('app');
 InertiaProgress.init();
@@ -22,6 +22,10 @@ const app = createApp(
     });
 
 app.use(i18n)
+app.use(VueLazyLoad, {
+    loading: '',
+    error: '',
+})
 app.use(Notifications)
 app.component('v-select', vSelect)
 app.component('InertiaHead', Head)

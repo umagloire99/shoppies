@@ -348,6 +348,7 @@ if (!function_exists('monetbilHook')) {
 function getCurrentCountry()
 {
     $countryCode = str_replace('/', '', request()->route()->getPrefix());
+    $countryCode = $countryCode ? $countryCode : 'cm';
     return \App\Models\Country::whereShortName($countryCode)->first();
 }
 

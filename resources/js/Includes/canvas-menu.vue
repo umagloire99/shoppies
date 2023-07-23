@@ -8,7 +8,7 @@
                     <img src="/img/logo.png" alt="Shoppies" style="height: 100px">
                 </a>
                 <span class="canvas-close d-inline-block text-right fs-24 ml-auto lh-1 text-primary"><i
-                    class="fal fa-times"></i></span>
+                    class="fa fa-times"></i></span>
             </div>
             <div class="overflow-y-auto pb-6 pl-8 pr-7 card-body pt-0">
                 <ul class="navbar-nav main-menu px-0 ">

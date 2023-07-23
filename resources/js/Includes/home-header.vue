@@ -34,7 +34,7 @@
                     </a>
                     <a :href="'mailto:'+$page.props.contact.site_email" target="_blank"
                        class="font-weight-500 text-secondary fs-11 fs-lg-14 text-body">
-                        <span><i class="fal fa-envelope pr-1 "></i>{{ $page.props.contact.site_email }}</span>
+                        <span><i class="fa fa-envelope pr-1 "></i>{{ $page.props.contact.site_email }}</span>
                     </a>
                 </div>
                 <ul class="navbar-nav flex-row d-none justify-content-xl-end d-lg-flex flex-wrap text-body py-0 navbar-right">

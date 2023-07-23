@@ -29,7 +29,7 @@
                                 </a>
                                 <a href="javascript:;" @click="clearCart" value="Clear Shopping Cart"
                                         class="btn btn-link p-0 border-0 border-bottom border-secondary rounded-0 my-3"><i
-                                    class="fal fa-times mr-2 text-secondary"></i>{{ $t('clear-shopping-cart') }}
+                                    class="fa fa-times mr-2 text-secondary"></i>{{ $t('clear-shopping-cart') }}
                                 </a>
                             </td>
                             <td colspan="3" class="text-right pb-6 pr-0 position-relative bg-white" style="right: -2px">

@@ -1,9 +1,9 @@
 <template>
     <div class="mb-4 d-flex">
-        <a href="javascript:;" @click="removedCartItem(cartItem.rowId)" class="d-flex align-items-center mr-2 text-muted"><i class="fal fa-times"></i></a>
+        <a href="javascript:;" @click="removedCartItem(cartItem.rowId)" class="d-flex align-items-center mr-2 text-muted"><i class="fa fa-times"></i></a>
         <div class="media w-100">
             <div class="w-60px mr-3">
-                <img :src="cartItem.img" alt="atural Coconut Cleansing Oil">
+                <img v-lazy="cartItem.img" alt="atural Coconut Cleansing Oil">
             </div>
             <div class="media-body d-flex">
                 <div class="cart-price pr-6">

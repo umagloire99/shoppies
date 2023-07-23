@@ -41,7 +41,7 @@
             <p class="mb-0 text-secondary font-weight-bold mr-xl-11">{{ $h.formatPrice(cartItem.discount_price * cartItem.quantity) }}</p>
         </td>
         <td class="align-middle text-right pr-5"><a href="javascript:;" @click="removedCartItem(cartItem.rowId)"  class="d-block"><i
-            class="fal fa-times text-body"></i></a></td>
+            class="fa fa-times text-body"></i></a></td>
     </tr>
 </template>
 

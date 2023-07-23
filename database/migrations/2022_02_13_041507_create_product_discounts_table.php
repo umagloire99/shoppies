@@ -17,7 +17,7 @@ class CreateProductDiscountsTable extends Migration
         Schema::create('product_discounts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->constrained()->cascadeOnDelete();
             $table->float('value');
             $table->timestamp('start_date')->default(Carbon::now());
             $table->timestamp('end_date')->default(Carbon::now()->addWeek());

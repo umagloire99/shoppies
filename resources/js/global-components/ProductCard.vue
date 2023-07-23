@@ -3,7 +3,7 @@
          v-if="product">
         <div class="card border-0">
             <a :href="route('products.show', product.slug)" class="position-relative">
-                <img :src="product.img" :alt="product.title">
+                <img v-lazy="product.img" :alt="product.title" style="height: 250px; width: auto;">
                 <div class="card-img-overlay d-flex p-3 flex-column">
                     <div class="mb-auto d-flex justify-content-center">
                         <div v-if="product.label === 'new'">

@@ -19,7 +19,6 @@ class HomeController extends Controller
      */
     public function index(): Response
     {
-
         setMetaInfo();
         $events = Event::limit(5)->get()->transform(function (Event $event) {
             return (new EventResource($event));

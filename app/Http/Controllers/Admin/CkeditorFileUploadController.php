@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+
+use App\Traits\ImageUploadTrait;
+use App\Http\Controllers\Controller;
 
 class CkeditorFileUploadController extends Controller
 {
@@ -13,7 +13,6 @@ class CkeditorFileUploadController extends Controller
 
     public function store(Request $request)
     {
-        Log::info($request->all());
         if ($request->hasFile('upload')) {
 
             $fileName = $this->uploadImage(

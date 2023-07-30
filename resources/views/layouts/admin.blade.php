@@ -34,7 +34,6 @@
     <link href="{{ asset('backend/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('backend/vendor/bootstrap-fileinput/css/fileinput.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/vendor/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
     <livewire:styles/>
     @yield('styles')
@@ -73,8 +72,6 @@
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/plugins/sortable.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
-    <!-- summernote -->
-    <script src="{{ asset('backend/vendor/summernote/summernote-bs4.min.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

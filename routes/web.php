@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CkeditorFileUploadController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 Auth::routes();
+
+Route::post('ckeditor/upload', [CkeditorFileUploadController::class, 'store'])->name('ckeditor.upload');
+
 
 Route::get('', function (){
    return redirect(route('home'));

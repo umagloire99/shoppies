@@ -10,6 +10,7 @@ class ImageService
     use ImageUploadTrait;
 
     private string $folder;
+    
     public function __construct($folder = 'products')
     {
         $this->folder = $folder;

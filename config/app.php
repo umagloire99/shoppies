@@ -60,8 +60,8 @@ return [
     'asset_url' => env('ASSET_URL', null),
 
     'supported_locales' => [
-        'en' => 'english',
-        'fr' => 'french',
+        'en', 
+        'fr'
     ],
 
     'rtl_locales' => ['ae', 'he', 'arc', 'ha', 'ur', 'dv', 'fa', 'yi', 'khw', 'ks', 'ku', 'ps'],

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CkeditorFileUploadController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\LinkController;
 use App\Http\Controllers\Admin\OrderController;
@@ -57,4 +58,5 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('settings', SettingController::class)->only('index', 'update');
     Route::resource('links', LinkController::class)->except('show');
     Route::resource('pages', PageController::class);
+
 });

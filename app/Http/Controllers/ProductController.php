@@ -77,7 +77,7 @@ class ProductController extends Controller
                 $sortField = 'id';
                 $sortType = 'asc';
         }
-        $products = getProducts()->withCount(['orders']);
+        $products = getProducts()->withCount(['orders'])->select(['products.id', 'name', 'slug', 'category_id', 'status', 'featured', 'review_able']);
         $category = Category::whereSlug($slug)->whereStatus(true)->first();
         if (!$category) {
             $category = Category::whereStatus(true)->inRandomOrder()->first();

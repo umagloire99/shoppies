@@ -31,10 +31,13 @@ class HomeController extends Controller
             });
 
         $products = getCurrentCountry()->products()
+            ->with(['discount'])
+            ->withCount(['approvedReviews'])
             ->inRandomOrder()
             ->active()
             ->activeCategory()
             ->take(20)
+            ->select(['products.id', 'name', 'slug', 'status', 'featured', 'review_able'])
             ->get()->transform(function (Product $product) {
                 return formatProduct($product);
             });

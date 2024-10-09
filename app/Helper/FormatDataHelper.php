@@ -133,8 +133,8 @@ function formatProduct(Product $product, $level = 1): array
         'pivot' => $product->pivot,
         'discount_price' => $label == 'sale' ? (int)($product->price - $product->discount->value * $product->price) : $product->price,
         'discount' => $label == 'sale' ? $product->discount->value : null,
-        'rate' => (int)$product->approvedReviews()->avg('rating'),
-        'reviews_count' => $product->approvedReviews()->count(),
+        'rate' => 5,
+        'reviews_count' => $product->approved_reviews_count,
         'img' => $product->firstMedia ? asset('storage/images/products/' . $product->firstMedia->file_name) : null,
     ];
     if ($level == 2) {

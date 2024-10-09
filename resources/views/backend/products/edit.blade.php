@@ -226,48 +226,7 @@
             CKEDITOR.replace(ckeditorTextareaList[i].getAttribute('name'), {
                 filebrowserUploadUrl: "{{ route('ckeditor.upload', ['_token' => csrf_token()]) }}",
                 filebrowserUploadMethod: 'form',
-                toolbar: [{
-                        name: 'paragraph',
-                        groups: ['list', 'indent', 'blocks', 'align', 'bidi'],
-                        items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote',
-                            'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
-                            'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'
-                        ]
-                    },
-                    {
-                        name: 'styles',
-                        items: ['Format', 'FontSize']
-                    },
-                    {
-                        name: 'colors',
-                        items: ['TextColor', 'BGColor']
-                    },
-                    {
-                        name: 'align',
-                        items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-                    },
-                    {
-                        name: 'document',
-                        items: ['Source']
-                    },
-                    '/',
-                    {
-                        name: 'basicstyles',
-                        items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript']
-                    },
-                    {
-                        name: 'links',
-                        items: ['Link', 'Unlink']
-                    },
-                    {
-                        name: 'insert',
-                        items: ['Image', 'Table', 'HorizontalRule']
-                    },
-                    {
-                        name: 'tools',
-                        items: ['Maximize']
-                    }
-                ]
+                fullPage: true
             });
         }
     </script>

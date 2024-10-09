@@ -214,7 +214,7 @@
                 },
                 {
                     name: 'styles',
-                    items: ['Format', 'FontSize']
+                    items: ['Format', 'FontSize', 'fontColor']
                 },
                 {
                     name: 'colors',

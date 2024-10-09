@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+
 
 class ProductController extends Controller
 {
@@ -143,10 +143,9 @@ class ProductController extends Controller
         ]);
         return $products;
     }
-    
+
     public function show($slug)
     {
-
         $product = getProducts()->with('media', 'category', 'approvedReviews')
             ->active()
             ->whereSlug($slug)

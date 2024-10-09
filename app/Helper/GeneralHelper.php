@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Country;
 use App\Models\OrderTransaction;
 use App\Models\PaymentMethod;
 use App\Models\User;
@@ -20,6 +21,7 @@ function clear_cache(): void
     Cache::forget('shop_tags_menu');
     Cache::forget('recent_reviews');
 }
+
 if (!function_exists('generateFakeEmail')) {
     function generateFakeEmail(): string
     {
@@ -174,7 +176,7 @@ function momoTransactionStatus($paymentId)
         'Ocp-Apim-Subscription-Key' => config('services.momo.subscription_key'),
         'X-Target-Environment' => config('services.momo.environment'),
         'Authorization' => 'Bearer ' . $token['access_token'],
-    ])->get(config('services.momo.transaction_status_uri') . "/${paymentId}");
+    ])->get(config('services.momo.transaction_status_uri') . "/$paymentId");
     $result = json_decode($response->body(), true);
     Log::error($result);
     $order = null;
@@ -345,11 +347,27 @@ if (!function_exists('monetbilHook')) {
     }
 }
 
+function getCurrentCountryCode()
+{
+    return Cache::remember('country_code_' . request()->ip(), 30 * 60, function () {
+        try {
+            $countryCode = strtolower(geoip()->getLocation()->iso_code);
+
+            if (!Country::whereShortName($countryCode)->exists()) {
+                $countryCode = 'cm';
+            }
+        } catch (Exception $exception) {
+            Log::error('GeoIP lookup failed: ' . $exception->getMessage());
+            $countryCode = 'cm';
+        }
+
+        return $countryCode;
+    });
+}
+
 function getCurrentCountry()
 {
-    $countryCode = str_replace('/', '', request()->route()->getPrefix());
-    $countryCode = $countryCode ? $countryCode : 'cm';
-    return \App\Models\Country::whereShortName($countryCode)->first();
+    return \App\Models\Country::whereShortName(getCurrentCountryCode())->first();
 }
 
 function getProducts()

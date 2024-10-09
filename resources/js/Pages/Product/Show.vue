@@ -189,7 +189,7 @@
                                         style="">
                                         <div id="accordion-style-01"
                                             class="accordion accordion-01 border-md-0 border p-md-0 p-6">
-                                            <div v-html="product.details">
+                                            <div v-html="product.details" style="text-align: center; justify-content: center;">
                                             </div>
                                         </div>
                                     </div>
@@ -212,8 +212,8 @@
                                         aria-labelledby="headinghow-to-use-01" data-parent="#collapse-tabs-accordion-01"
                                         style="">
                                         <div id="accordion-style-01-2"
-                                            class="accordion accordion-01 border-md-0 border p-md-0 p-6 ">
-                                            <div v-html="product.usages">
+                                            class="accordion accordion-01 border-md-0 border p-md-0 p-6 " >
+                                            <div v-html="product.usages" style="text-align: center; justify-content: center;">
                                             </div>
                                         </div>
                                     </div>
@@ -236,7 +236,7 @@
                                         style="">
                                         <div id="accordion-style-01-3"
                                             class="accordion accordion-01 border-md-0 border p-md-0 p-6">
-                                            <div v-html="product.features">
+                                            <div v-html="product.features" style="text-align: center; justify-content: center;">
                                             </div>
                                         </div>
                                     </div>

@@ -27,5 +27,7 @@ return [
     "about" => 'Tout ce que tu cherches se trouve Ici!!!',
     'place-order-subject' => 'Merci pour votre achat, :name',
     'place-order-line-one' => 'Nous voulions juste vous dire un grand merci pour votre commande !',
-    'place-order-line-two' => 'Nous voulions aussi vous donner une mise à jour de ce qui s\'est passé ici à HappyCute'
+    'place-order-line-two' => 'Nous voulions aussi vous donner une mise à jour de ce qui s\'est passé ici à MaxShoppies',
+    'checkout-warning' => "Remarque : Si vous entrez votre numéro, votre nom et votre ville, nous vous contacterons immédiatement pour une livraison aujourd'hui ou demain.\n Si vous n'avez pas encore les moyens, merci de ne pas passer commande.\n Nous ne reportons pas la livraison à la semaine prochaine. La livraison est uniquement pour aujourd'hui ou demain. Si cela ne vous convient pas, merci de patienter avant de commander.
+\nVeuillez indiquer votre numéro uniquement si vous êtes prêt à recevoir la livraison aujourd'hui ou demain. Si vous prévoyez d'avoir les fonds la semaine prochaine ou à la fin du mois, attendez avant de passer commande."
 ];

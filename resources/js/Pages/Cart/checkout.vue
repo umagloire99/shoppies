@@ -168,12 +168,16 @@
                 </div>
               </div>
               <div
-                class="payment-box alert alert-info"
+                class="payment-box text-info"
                 role="alert"
                 v-if="pay_code === 'CASH'"
               >
                 <p>{{ $t("cash") }}</p>
               </div>
+              <div class="alert alert-danger">
+                {{ $t('checkout-warning') }}
+              </div>
+
               <div class="payment-box"
                 v-if="pay_code === 'MOMO' || pay_code === 'MONETBIL'">
                 <div

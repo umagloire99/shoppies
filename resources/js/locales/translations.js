@@ -105,6 +105,8 @@ export default {
         'order-summary': 'Order Summary',
         'subscribe': 'Subscribe',
         'phone-number': 'Phone Number',
+        'checkout-warning' : "Note: If you provide your phone number, name, and city, we will contact you immediately for delivery today or tomorrow.\n If you are not yet able to pay, please do not place an order.\n We do not postpone delivery to next week. Delivery is only for today or tomorrow. If this doesn't suit you, please wait before ordering.\n Please provide your phone number only if you are ready to receive the delivery today or tomorrow. If you plan to have the funds next week or at the end of the month, please wait before placing an order."
+
     },
     "fr": {
         'quality-products':"Des produits de qualité",
@@ -213,6 +215,7 @@ export default {
         'no-supported-city': 'Votre ville n\'est pas encore prise en charge. Continuons sur whatsapp en cliquant sur l\'icône ci-dessous.',
         'please-select-your-city': 'Veuillez choisir votre ville',
         'order-summary': 'Résumé de la commande',
-        'subscribe' : 'S\'abonner'
+        'subscribe' : 'S\'abonner',
+        'checkout-warning' : "Remarque : Si vous entrez votre numéro, votre nom et votre ville, nous vous contacterons immédiatement pour une livraison aujourd'hui ou demain.\n Si vous n'avez pas encore les moyens, merci de ne pas passer commande.\n Nous ne reportons pas la livraison à la semaine prochaine. La livraison est uniquement pour aujourd'hui ou demain. Si cela ne vous convient pas, merci de patienter avant de commander.\nVeuillez indiquer votre numéro uniquement si vous êtes prêt à recevoir la livraison aujourd'hui ou demain. Si vous prévoyez d'avoir les fonds la semaine prochaine ou à la fin du mois, attendez avant de passer commande."
     }
 }

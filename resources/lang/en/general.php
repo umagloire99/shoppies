@@ -29,4 +29,6 @@ return [
     'place-order-line-two' => 'We also wanted to give you an update on what\'s been happening here at HappyCute',
     'dear' => 'Dear, :name',
     'our-products-for-everyone' => 'Our products are designed for everyone',
+    'checkout-warning' => "Note: If you provide your phone number, name, and city, we will contact you immediately for delivery today or tomorrow.\n If you are not yet able to pay, please do not place an order.\n We do not postpone delivery to next week. Delivery is only for today or tomorrow. If this doesn't suit you, please wait before ordering.\n Please provide your phone number only if you are ready to receive the delivery today or tomorrow. If you plan to have the funds next week or at the end of the month, please wait before placing an order."
+
 ];

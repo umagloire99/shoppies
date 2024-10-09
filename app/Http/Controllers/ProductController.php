@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 
@@ -77,7 +78,7 @@ class ProductController extends Controller
                 $sortField = 'id';
                 $sortType = 'asc';
         }
-        $products = getProducts()->withCount(['orders'])->select(['products.id', 'name', 'slug', 'category_id', 'status', 'featured', 'review_able']);
+        $products = getProducts()->with(['firstMedia', 'discount'])->withCount(['orders'])->select(['products.id', 'name', 'slug', 'category_id', 'status', 'featured', 'review_able']);
         $category = Category::whereSlug($slug)->whereStatus(true)->first();
         if (!$category) {
             $category = Category::whereStatus(true)->inRandomOrder()->first();
@@ -160,13 +161,15 @@ class ProductController extends Controller
             $product->img
         );
 
-        $relatedProducts = getProducts()->with('firstMedia')->whereHas('category', function ($query) use ($product) {
+        $relatedProducts = getProducts()->with(['firstMedia', 'discount'])->whereHas('category', function ($query) use ($product) {
             $query->whereId($product->category_id);
             $query->whereStatus(1);
-        })->where('products.id', '<>', $product->id)
+        })->withCount(['approvedReviews'])
+            ->where('products.id', '<>', $product->id)
             ->inRandomOrder()
             ->active()
             ->take(8)
+            ->select(['products.id', 'name', 'slug', 'status', 'featured', 'review_able', 'category_id'])
             ->get()->transform(function (Product $product) {
                 return formatProduct($product);
             });

@@ -31,7 +31,7 @@ class HomeController extends Controller
             });
 
         $products = getCurrentCountry()->products()
-            ->with(['discount'])
+            ->with(['discount', 'firstMedia'])
             ->withCount(['approvedReviews'])
             ->inRandomOrder()
             ->active()

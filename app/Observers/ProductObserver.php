@@ -41,13 +41,6 @@ class ProductObserver
     public function updated(Product $product)
     {
         Cache::flush();
-
-        $product->update([
-            'description' => str_replace("<img", "<img loading='lazy'", $product->description),
-            'details' => str_replace("<img", "<img loading='lazy'", $product->details),
-            'features' => str_replace("<img", "<img loading='lazy'", $product->features),
-            'usages' => str_replace("<img", "<img loading='lazy'", $product->usages),
-        ]);
     }
 
     /**

@@ -12,6 +12,8 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\CkeditorFileUploadController;
+use App\Models\Product;
+use App\Models\Role;
 
 Auth::routes();
 
@@ -58,3 +60,14 @@ Route::post('review/{item_id}', [ReviewController::class, 'store'])->name('revie
 Route::get('receipt/{ref_id}', [PaymentController::class, 'receipt'])
     ->name('receipt.show');
 Route::get('lang/{lang}', [PageController::class, 'setLocale'])->name('locale.set');
+
+Route::get('update-product-text', function () {
+    foreach (Product::all() as $product) {
+        $product->update([
+            'description' => str_replace("<img", "<img loading='lazy'", $product->description),
+            'details' => str_replace("<img", "<img loading='lazy'", $product->details),
+            'features' => str_replace("<img", "<img loading='lazy'", $product->features),
+            'usages' => str_replace("<img", "<img loading='lazy'", $product->usages),
+        ]);
+    }
+});

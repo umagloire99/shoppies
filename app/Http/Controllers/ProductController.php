@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CacheDataManager;
 use Illuminate\Http\Request;
 
 
@@ -147,11 +148,17 @@ class ProductController extends Controller
 
     public function show($slug)
     {
-        $product = getProducts()->with('media', 'category', 'approvedReviews')
-            ->active()
-            ->whereSlug($slug)
-            ->activeCategory()
-            ->first();
+        $cacheData = new CacheDataManager(static::class);
+
+        $product = $cacheData->getData(
+            Product::class,
+            getProducts()->with('media', 'category', 'approvedReviews')
+                ->active()
+                ->whereSlug($slug)
+                ->activeCategory()
+                ->first()
+        );
+
         if (!$product) {
             return back()->with(['warning' => __('general.resource-not-found')]);
         }
@@ -161,18 +168,22 @@ class ProductController extends Controller
             $product->img
         );
 
-        $relatedProducts = getProducts()->with(['firstMedia', 'discount'])->whereHas('category', function ($query) use ($product) {
-            $query->whereId($product->category_id);
-            $query->whereStatus(1);
-        })->withCount(['approvedReviews'])
-            ->where('products.id', '<>', $product->id)
-            ->inRandomOrder()
-            ->active()
-            ->take(8)
-            ->select(['products.id', 'name', 'slug', 'status', 'featured', 'review_able', 'category_id'])
-            ->get()->transform(function (Product $product) {
-                return formatProduct($product);
-            });
+        $relatedProducts = $cacheData->getData(
+            'related_products',
+            getProducts()->with(['firstMedia', 'discount'])->whereHas('category', function ($query) use ($product) {
+                $query->whereId($product->category_id);
+                $query->whereStatus(1);
+            })->withCount(['approvedReviews'])
+                ->where('products.id', '<>', $product->id)
+                ->inRandomOrder()
+                ->active()
+                ->take(8)
+                ->select(['products.id', 'name', 'slug', 'status', 'featured', 'review_able', 'category_id'])
+                ->get()->transform(function (Product $product) {
+                    return formatProduct($product);
+                })
+        );
+
         return Inertia::render('Product/Show', [
             'product' => formatProduct($product, 2),
             'relatedProducts' => $relatedProducts

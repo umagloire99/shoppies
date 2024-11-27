@@ -62,12 +62,15 @@ Route::get('receipt/{ref_id}', [PaymentController::class, 'receipt'])
 Route::get('lang/{lang}', [PageController::class, 'setLocale'])->name('locale.set');
 
 Route::get('update-product-text', function () {
-    foreach (Product::all() as $product) {
-        $product->update([
-            'description' => str_replace("<img", "<img loading='lazy'", $product->description),
-            'details' => str_replace("<img", "<img loading='lazy'", $product->details),
-            'features' => str_replace("<img", "<img loading='lazy'", $product->features),
-            'usages' => str_replace("<img", "<img loading='lazy'", $product->usages),
-        ]);
-    }
+    Product::chunk(3, function($products){
+        foreach ($products as $product) {
+            $product->update([
+                'description' => str_replace("<img", "<img loading='lazy'", $product->description),
+                'details' => str_replace("<img", "<img loading='lazy'", $product->details),
+                'features' => str_replace("<img", "<img loading='lazy'", $product->features),
+                'usages' => str_replace("<img", "<img loading='lazy'", $product->usages),
+            ]);
+        }
+    });
+    return 'success';
 });
